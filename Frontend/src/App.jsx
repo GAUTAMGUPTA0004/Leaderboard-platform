@@ -5,7 +5,7 @@ import UserSelector from './UserSelector';
 import Leaderboard from './Leaderboard';
 import ClaimInfo from './Claiminfo';
 
-// Replace this with your hosted backend API (e.g. on Render)
+
 const API ='https://leaderboard-platform.onrender.com';
 
 // Main React component of the app
