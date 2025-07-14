@@ -1,0 +1,31 @@
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #fff8e1;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.title {
+  font-size: 2.2rem;
+  color: #ff6f00;
+  margin-bottom: 20px;
+}
+
+.claim-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #ff6f00;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.claim-btn:hover {
+  background: #e65100;
+}
