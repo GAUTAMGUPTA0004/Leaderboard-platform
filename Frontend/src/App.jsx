@@ -6,7 +6,7 @@ import Leaderboard from './Leaderboard';
 import ClaimInfo from './Claiminfo';
 
 // Replace this with your hosted backend API (e.g. on Render)
-const API = 'https://your-backend-service-name.onrender.com';
+const API ='https://leaderboard-platform.onrender.com';
 
 // Main React component of the app
 // It manages the app state and brings all components together

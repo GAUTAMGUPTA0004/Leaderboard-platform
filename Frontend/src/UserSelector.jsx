@@ -1,19 +1,46 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import './UserSelector.css';
 
-export default function UserSelector({ selectedUser, setSelectedUser }) {
-  const [users, setUsers] = useState([]);
+// Component for selecting an existing user or adding a new one
+function UserSelector({ users, selectedUser, setSelectedUser, onAddUser }) {
+  const [newUser, setNewUser] = useState('');
 
-  useEffect(() => {
-    axios.get("http://localhost:5000/api/users").then(res => setUsers(res.data));
-  }, []);
+  const handleAddUser = () => {
+    if (newUser.trim()) {
+      onAddUser(newUser.trim());
+      setNewUser('');
+    }
+  };
 
   return (
-    <select onChange={(e) => setSelectedUser(e.target.value)}>
-      <option>Select User</option>
-      {users.map(user => (
-        <option key={user._id} value={user._id}>{user.name}</option>
-      ))}
-    </select>
+    <div className="user-selector">
+      <select 
+        value={selectedUser} 
+        onChange={(e) => setSelectedUser(e.target.value)}
+      >
+        <option value="">Select User</option>
+        {users.map((user) => (
+          <option key={user._id} value={user._id}>
+            {user.name}
+          </option>
+        ))}
+      </select>
+      <input
+        type="text"
+        placeholder="New User Name"
+        value={newUser}
+        onChange={(e) => setNewUser(e.target.value)}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+            handleAddUser();
+          }
+        }}
+      />
+      <button onClick={handleAddUser}>
+        + Add User
+      </button>
+    </div>
   );
 }
+
+export default UserSelector;

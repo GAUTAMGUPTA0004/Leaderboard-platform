@@ -1,32 +1,31 @@
-import React, { useState } from 'react';
-import './UserSelector.css';
+import React from 'react';
+import './Leaderboard.css';
 
-// Component for selecting an existing user or adding a new one
-function UserSelector({ users, selectedUser, setSelectedUser, onAddUser }) {
-  const [newUser, setNewUser] = useState('');
-
+// Component to display leaderboard table with user rankings
+function Leaderboard({ users }) {
   return (
-    <div className="user-selector">
-      <select value={selectedUser} onChange={(e) => setSelectedUser(e.target.value)}>
-        <option value="">Select User</option>
-        {users.map((u) => (
-          <option key={u._id} value={u._id}>{u.name}</option>
-        ))}
-      </select>
-      <input
-        type="text"
-        placeholder="New User"
-        value={newUser}
-        onChange={(e) => setNewUser(e.target.value)}
-      />
-      <button onClick={() => {
-        if (newUser) {
-          onAddUser(newUser);
-          setNewUser('');
-        }
-      }}>+ Add</button>
+    <div className="leaderboard">
+      <h2>🏆 Leaderboard</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user, index) => (
+            <tr key={user._id}>
+              <td>{index + 1}</td>
+              <td>{user.name}</td>
+              <td>{user.totalPoints}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
 
-export default UserSelector;
+export default Leaderboard;
